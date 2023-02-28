@@ -23,7 +23,7 @@ function printCountry(){
         else
             res[CountryName]++ ;
     }
-
+  
     // console.log(res)
     for (let i in res) {
         tab.push({ "country": i, "count": res[i] });
