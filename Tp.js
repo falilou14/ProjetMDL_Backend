@@ -16,6 +16,7 @@ function printCountry(){
     let tab = [];
     
     for (let i=0; i<user.length ;i++){
+        
         var CountryName = user[i].country;
         //console.log(CountryName);
         if (!resultat[CountryName]) { 
