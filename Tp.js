@@ -3,7 +3,7 @@ let rawdata = fs.readFileSync("users.json");
 
 let user = JSON.parse(rawdata);
 
-console.log(user); // 1er test d'affichage du fichier Users
+//console.log(user); // 1er test d'affichage du fichier Users
 
 
 /**
@@ -33,7 +33,7 @@ function printCountry(){
     console.log(tab);
 }
 
-printCountry();
+//printCountry();
 
 
 /**
