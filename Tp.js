@@ -11,6 +11,7 @@ console.log(user); // 1er test d'affichage du fichier Users
  */
 function printCountry(){ 
     
+    
     let resultat = {}; 
     let tab = [];
     
