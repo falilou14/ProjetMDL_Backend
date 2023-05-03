@@ -1,5 +1,5 @@
 const dal = require("../data/datalayer");
-// const _ = require("underscore"); //voir a quoi ca sert
+
  
 const defaultNumber = 10;
 const defaultPage = 1;

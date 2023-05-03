@@ -30,7 +30,7 @@ let datalayer = {
 
             //filter by number and page
             if (number && page) {
-                customers = customers.slice((page - 1) * number, page)
+                customers = customers.slice((page - 1) * number, page * number);
             }
 
             const result = {
