@@ -30,6 +30,33 @@ const business = {
 
         //return customers
         return resCustomers;
+    },
+
+    addCustomers: function(clientJSON){
+
+        console.log("clientJSON", clientJSON);
+        if( clientJSON.fisrt === undefined || 
+            clientJSON.last === undefined ||
+            clientJSON.company === undefined||
+            clientJSON.country === undefined ||
+            clientJSON.email === undefined ||
+
+            clientJSON.fisrt === " " ||
+            clientJSON.last === " " ||
+            clientJSON.company === " "||
+            clientJSON.country === " "||
+            clientJSON.email === " "
+            ){
+                // on envoie une erreur 
+                console.log("champs vides ");
+                //  Retour Code d'erreur 
+                return {status : 400 , message :" les champs n'ont pas été remplis"};
+            }
+
+            const nouveauClient = dal.addCustomer(clientJSON);
+            
+            return nouveauClient;
+
     }
 
     

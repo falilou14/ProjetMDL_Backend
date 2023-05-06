@@ -1,7 +1,7 @@
 const fs = require("fs");
-// const proc = require("process");
 
-// require("dotenv").config();
+
+
 const filename = "./data/customers.json";
 
 let datalayer = {
@@ -41,6 +41,36 @@ let datalayer = {
             return result;
 
         }
+    },
+
+
+
+    
+    addCustomer: function(clientJSON){
+
+        const getNewId = ObjectClient => Math.max(...ObjectClient.map(customer => customer.id))+1;
+
+
+        numCustomer = getNewId(ObjectClient);
+        clientJSON.id = numCustomer;
+
+        // date de l'ajout du client 
+
+        clientJSON.created_at = currentDate;
+
+        //ajouter clientJSON dans objetClient 
+
+        ObjectClient.push(clientJSON);
+
+        fs.writeFileSync(filename ,JSON.stringify(ObjectClient));
+
+        return clientJSON;
+
+    },
+
+
+    removeCustomer : function (){
+
     }
 };
 

@@ -13,7 +13,7 @@ const apiServ = {
 
         app.get("/test", function(req, res){
             const testObj = {
-                test: "test"
+                test: "test "
             };
 
             console.log("call done");
@@ -25,17 +25,43 @@ const apiServ = {
             const number = req.query.number;
             const page = req.query.page;
 
-            console.log("number", number);
-            console.log("page", page);
+
 
 
             // get customers from business layer
-            // const customers = business.getAllCustomers();
+            
             const resCustomers = business.getCustomers(number, page);
 
             // res.json(customers);
             res.json(resCustomers);
         });
+
+        app.get("api/addcustomers", function(req,res){
+            
+            var clientJSON = {
+                "id ": null,
+                "email": req.body.email,
+                "first": req.body.first,
+                "last" : req.body.last,                                       
+                "company": req.body.company,
+                "created_at": null,
+                "country": req.body.country,
+
+            };
+
+            jsonRes = business.addCustomers(clientJSON);
+
+            if (jsonRes === 400){
+                res.status(400).send(jsonRes.message);
+
+
+            }
+            else{
+                res.json(jsonRes);
+
+            }
+        });
+        
 
         app.listen(port, function(){
             console.log("Server running on port " + port);
