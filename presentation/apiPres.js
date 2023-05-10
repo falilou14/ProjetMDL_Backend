@@ -5,6 +5,19 @@ const business = require("../business/business");
 var app = express();
 
 
+
+
+app.use(function (req, res, next) {
+
+    res.header("Access-Control-Allow-Origin", "*");
+    
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    
+    next();
+    
+    });
+
+
 const apiServ = {
     start: function(port) {
         app.use(express.json());
@@ -36,7 +49,7 @@ const apiServ = {
             res.json(resCustomers);
         });
 
-        app.get("api/addcustomers", function(req,res){
+        app.post("/api/addclient", function(req,res){
             
             var clientJSON = {
                 "id ": null,
@@ -48,7 +61,7 @@ const apiServ = {
                 "country": req.body.country,
 
             };
-
+console.log("API");
             jsonRes = business.addCustomers(clientJSON);
 
             if (jsonRes === 400){
@@ -61,6 +74,20 @@ const apiServ = {
 
             }
         });
+        app.post("/api/modclient", function (req, res) {
+
+            const customer = req.body;
+            
+            
+            const resCustomers = business.modifCustomer(customer);
+            
+            
+            res.json(resCustomers);
+        });
+
+
+
+        
         
 
         app.listen(port, function(){
