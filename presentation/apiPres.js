@@ -85,6 +85,21 @@ console.log("API");
             res.json(resCustomers);
         });
 
+        app.post("/api/delClient", function (req, res) {
+
+            console.log("in api delcustomer")
+            
+            const id = req.body;
+            
+            
+            const resCustomers = business.delCustomer(id);
+            
+            
+            res.json(resCustomers);
+            
+            
+            });
+
 
 
         

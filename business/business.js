@@ -141,6 +141,36 @@ modifCustomer: function (data) {
     
     },
 
+delCustomer: function (data) {
+
+
+
+    console.log("in delCustomerBusinness");
+    
+    let rawdata = fs.readFileSync(filename);
+    
+    //parse to object
+    
+    let customers = JSON.parse(rawdata);
+    
+    let c = customers.length;
+    
+    //on parse l'id en int
+    
+    idParsed=JSON.parse(data.id);
+    
+    console.log(idParsed);
+    
+    if (idParsed > c || idParsed < 0) {
+    
+    throw error;
+    
+    }
+    
+    dal.delCustomer(idParsed);
+    
+    }
+
     
 
 };

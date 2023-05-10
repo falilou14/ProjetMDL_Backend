@@ -79,14 +79,46 @@ let datalayer = {
     },
 
 
-    removeCustomer : function (){
+    delCustomer: function (id) {
 
 
+        console.log("in delCustomer DAL");
+        
+        let rawdata = fs.readFileSync(filename);
+        
+        //parse to object
+        
+        let customers = JSON.parse(rawdata);
+        
+        let c = customers.length;
+        
+        console.log(id);
+        
+        //on supprim le client
+        
+        let removed = customers.splice(id - 1, 1);
+        
+        
+        //on renumérote les id
+        
+        console.log(removed);
+        
+        customers.forEach(element => {
+        
+        element.id = customers.indexOf(element) + 1;
+        
+        });
 
+      fs.writeFile(filename, JSON.stringify(customers), (error) => {
 
-    },
-
+    if (error) throw error;
     
+    });
+    
+    
+    return customers;
+    
+    },
 
 modifCustomer: function (custom) {
 
